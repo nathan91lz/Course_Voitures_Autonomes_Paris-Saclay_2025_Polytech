@@ -15,7 +15,7 @@ def connect_serial(port, baud_rate):
     try:
         ser = serial.Serial(port, baud_rate, timeout=1)
         print(f"Connected to {port} at {baud_rate} baud.")
-        time.sleep(2)  # Allow time for connection to establish
+        time.sleep(2)  
         return ser
     except Exception as e:
         print("Error opening serial port:", e)
@@ -27,7 +27,7 @@ def main():
     
     if not ser:
         print("Failed to connect to serial port. Exiting...")
-        return  # Exit if no serial connection
+        return  
     
     print("Waiting for data...\n")
 

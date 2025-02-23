@@ -1,5 +1,9 @@
 /**
  *  Target : Arduino nano old bootloader
+ *  speedMin : 98
+ *  speedMax : 180
+ *  -speedMin : 79
+ *  -speedMax : 19
  */
 #include <SoftwareSerial.h>
 #include "Propulsion.h"
@@ -21,12 +25,14 @@ void setup() {
 }
 
 void loop() {
-    if (Serial.available()) { // Bluetooth command received
-        char commande = Serial.read();
+    if (BTSerial.available()) { // Bluetooth command received
+        char commande = BTSerial.read();
         Serial.print("Commande reçue : ");
         Serial.println(commande);
+        BTSerial.println(commande);
         
         motor.setSpeed(commande); 
         motor.updateMotor(); 
     }
+   
 }

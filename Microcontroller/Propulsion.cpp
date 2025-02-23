@@ -10,14 +10,18 @@ void Propulsion::begin(){
 }
 
 void Propulsion::setSpeed(char command){
-    if(command == 's'){
+    if(command == 'n'){  // neutral
         speed = 90;
-    }else if(command == 'a'){
+    }else if(command == '+'){ 
         speed += 1;
         if(speed > 180) speed = 180;
-    }else if(command == 'd'){
+    }else if(command == '-'){
         speed -= 1;
-        if(speed < 0) speed = 0;
+        if(speed < 19) speed = 19;
+    }else if(command == 'd'){
+        speed = 98;
+    }else if(command == 'r'){
+        speed = 78;
     }
 }
 
