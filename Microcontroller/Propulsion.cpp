@@ -2,34 +2,34 @@
 
 Propulsion::Propulsion(int pin) : motorPin(pin), speed(90) {}
 
-void Propulsion::begin(){
+void Propulsion::begin() {
     motor.attach(motorPin);
     Serial.println("Initialisation des moteurs ... ");
     motor.write(90);
-    delay(1000);
+    delay(500);
 }
 
-void Propulsion::setSpeed(char command){
+void Propulsion::setSpeed(char command) {
     if(command == 'n'){  // neutral
         speed = 90;
-    }else if(command == '+'){ 
+    }else if(command == 'z'){ 
         speed += 1;
         if(speed > 180) speed = 180;
-    }else if(command == '-'){
+    }else if(command == 's'){
         speed -= 1;
         if(speed < 19) speed = 19;
-    }else if(command == 'd'){
+    }else if(command == 'b'){
         speed = 98;
-    }else if(command == 'r'){
+    }else if(command == 'v'){
         speed = 78;
     }
 }
 
-float Propulsion::getSpeed() const{
+float Propulsion::getSpeed() const {
     return (speed - 90) * (maxSpeed / 90.0);
 }
 
-void Propulsion::updateMotor(){
+void Propulsion::update() {
     motor.write(speed);
 
     Serial.print("Vitesse PWM : ");

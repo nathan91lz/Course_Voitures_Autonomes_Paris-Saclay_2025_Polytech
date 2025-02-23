@@ -5,18 +5,18 @@
 #include <Servo.h>
 
 class Propulsion {
-private:
-  Servo motor;
-  uint8_t motorPin;
-  const float maxSpeed = 50.0;
-  float speed;
+  private:
+    Servo motor;
+    uint8_t motorPin;
+    const float maxSpeed = 50.0;
+    float speed;
 
-public:
-  Propulsion(int pin); 
-  void begin();
-  void setSpeed(char command);
-  float getSpeed() const;
-  void updateMotor();
+  public:
+    Propulsion(int pin); 
+    void begin();
+    void setSpeed(char command);
+    float getSpeed() const;
+    void update();
 };
 
 #endif
