@@ -1,0 +1,53 @@
+@startuml
+
+
+
+class Data {
+    # message : String
+
+    + Data()
+    + processCommand(String const &command) : void
+}
+
+class Propulsion {
+    # motorPin : uint8_t
+    # maxSpeed : const float
+    # speed : float
+    # motor : Servo
+
+    + Propulsion()
+    + begin() : void
+    + setSpeed(char command) : void
+    + setSpeedValue(int speed) : void
+    + getSpeed() : float
+    + update() : void
+}
+
+class Direction {
+    # steerPin : uint8_t
+    # center : const float
+    # wheelLockMax : const float
+    # angle : float
+    # steer Servo
+    
+    + Direction()
+    + begin() : void
+    + setAngle(char command) : void
+    + setAngleValue(int angle) : void
+    + getAngle() : float
+    + void update()
+}
+
+class Arduino {
+    + SoftwareSerial BTSerial
+    + Data data
+    + Motor motor
+    + Steering steer
+    + void setup()
+    + void loop()
+}
+
+Arduino -> Data : "Uses"
+Data --> Motor : "Controls speed"
+Data --> Steering : "Controls angle"
+@enduml
